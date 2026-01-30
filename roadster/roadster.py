@@ -91,8 +91,14 @@ def total_consumption(x, route, n):
 
 ### PART 3A ###
 def distance(T, route): 
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
-    raise NotImplementedError('distance not implemented yet!')
+    #iterera över x ochtills abs(tiden time_to_destination(x) - T) < 1e-4
+    #x -= time_to_destination(x)/velocity(x)    typ så tror jag
+    
+    
+        
+    return
+
+
 
 ### PART 3B ###
 def reach(C, route):
