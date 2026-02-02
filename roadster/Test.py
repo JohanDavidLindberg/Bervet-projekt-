@@ -12,3 +12,5 @@ print(c)
 print(c[-1])
 c -= 2
 print(c)
+
+#Hej hej kolla på mig
