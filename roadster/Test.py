@@ -1,16 +1,7 @@
 import numpy as np
+import roadster
 
-a = np.zeros(4, dtype=np.int_)
+a = roadster.time_to_destination(35, "speed_anna.npz",100)
 print(a)
-a[1] = 2
-print(a)
-b= [0,0,0,0,0,0,0]
+b = roadster.total_consumption(23.7, "speed_elsa.npz",1000000)
 print(b)
-c = np.array([0,0,0,0,0,0,0])
-print(c)
-
-print(c[-1])
-c -= 2
-print(c)
-
-#Hej hej kolla på mig
