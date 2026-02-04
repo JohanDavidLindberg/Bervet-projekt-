@@ -30,14 +30,21 @@ plt.show()'''
     nvalue = np.array([])
     distance, speed = roadster.load_route(route)
     äkta = roadster.time_to_destination(distance[-1], route, 100000)
-    for i in range(10): #sätt inte för högt
+    for i in range(12): #sätt inte för högt
         fel = abs(äkta - roadster.time_to_destination(distance[-1], route, n*2**i))
         totalfel = np.append(totalfel, fel)
         nvalue = np.append(nvalue, n*2**i)
-    plt.loglog(nvalue, totalfel)
-    
-    plt.show()
-konvergensstudie('speed_anna.npz', 10)
-    
+    return nvalue, totalfel
+
+n=10
+
+anna_nvalue, anna_totalfel = konvergensstudie('speed_anna.npz', n)
+elsa_nvalue, elsa_totalfel = konvergensstudie('speed_elsa.npz', n)
+
+plt.loglog(anna_nvalue, anna_totalfel, label = "anna")
+plt.loglog(elsa_nvalue, elsa_totalfel, label = "elsa")
+plt.plot(np.logspace(1, 3, 100, base=n), 1e2*np.logspace(1, 3, 100, base=n)**-2, label="lutning -2")
+plt.legend()
+plt.show()
 
 
