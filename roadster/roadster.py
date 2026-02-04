@@ -59,33 +59,20 @@ def time_to_destination(x, route, n):
     # route rutt
     # n antal delintervall
     h = x/n
-    I = 0
-    for i in range(n+1):
-        if i==0 or i==n:
-            k = 1
-        else:
-            k = 2
-        xi = i*h
-        vi = velocity(xi, route)
-        I += k*(1/vi)
+    pos = np.linspace(0,x,n+1)
+    tid = 1 / velocity(pos,route)
+    tid[0], tid[-1] = tid[0]/2, tid[-1]/2 
 
-    return I*h/2
+    return np.sum(tid)*h
 
 ### PART 2B ###
 def total_consumption(x, route, n):
-    
     h=x/n
-    I=0
-    for i in range(n+1):
-        if i == 0 or i == n:
-            k = 1
-        else:
-            k=2
-        xi = i*h
-        vi = velocity(xi, route)
-        ci = consumption(vi)
-        I += k*ci
-    return I*h/2
+    pos = np.linspace(0,x,n+1)
+    hastighet = velocity(pos, route)
+    consump = consumption(hastighet)
+    consump[0], consump[-1] = consump[0]/2, consump[-1]/2
+    return np.sum(consump)*h
 
     
 
