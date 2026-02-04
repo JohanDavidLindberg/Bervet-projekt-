@@ -1,6 +1,6 @@
 import numpy as np
 import roadster
-a = np.zeros(4, dtype=np.int_)
+'''a = np.zeros(4, dtype=np.int_)
 print(a)
 b = roadster.total_consumption(23.7, "speed_elsa.npz",1000000)
 print(b)
@@ -9,7 +9,7 @@ print(c)
 
 print(c[-1])
 c -= 2
-print(c)
+print(c)'''
 
 
 '''time = 0
@@ -23,5 +23,15 @@ while time < 0.95 or time > 0.9666667:
     minuter = time*60
     print(f'Loop {n}')
 print(f'n = {n} and time = {time}, vilket är {minuter} minuter')'''
-
-#print(roadster.total_consumption(65, 'speed_anna.npz', 10000))
+'''distance, speed = roadster.load_route('speed_anna.npz')
+print(roadster.time_to_destination(distance[-1], 'speed_anna.npz', 10000))
+print(roadster.total_consumption(distance[-1], 'speed_anna.npz', 10000))
+c = 0
+n = 400
+while c < 11925 or c > 11926:
+    n += 1
+    c = roadster.total_consumption(distance[-1], 'speed_anna.npz', n)
+    print(f'Loop nr {n}')
+print(f'C is {c} and n = {n}')'''
+for i in np.logspace(0, 5):
+        print(i)

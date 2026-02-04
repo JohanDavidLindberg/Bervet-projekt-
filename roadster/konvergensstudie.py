@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def konvergensstudie(route, n):
-    x = roadster.load_route(route)[0][-1]
+    '''x = roadster.load_route(route)[0][-1]
 
     steg = np.zeros(8, dtype=np.float32)
     E = np.zeros(8, dtype=np.float32)
@@ -25,4 +25,19 @@ plt.plot(np.logspace(1, 3, 100), 7e4*np.logspace(1, 3, 100)**-2, label="lutning 
 plt.legend()
 plt.xlabel("n")
 plt.ylabel("E")
-plt.show()
+plt.show()'''
+    totalfel = np.array([])
+    nvalue = np.array([])
+    distance, speed = roadster.load_route(route)
+    äkta = roadster.time_to_destination(distance[-1], route, 100000)
+    for i in range(10): #sätt inte för högt
+        fel = abs(äkta - roadster.time_to_destination(distance[-1], route, n*2**i))
+        totalfel = np.append(totalfel, fel)
+        nvalue = np.append(nvalue, n*2**i)
+    plt.loglog(nvalue, totalfel)
+    
+    plt.show()
+konvergensstudie('speed_anna.npz', 10)
+    
+
+
