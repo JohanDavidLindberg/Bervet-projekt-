@@ -44,6 +44,7 @@ elsa_nvalue, elsa_totalfel = konvergensstudie('speed_elsa.npz', n)
 plt.loglog(anna_nvalue, anna_totalfel, label = "anna")
 plt.loglog(elsa_nvalue, elsa_totalfel, label = "elsa")
 plt.plot(np.logspace(1, 3, 100, base=n), 1e2*np.logspace(1, 3, 100, base=n)**-2, label="lutning -2")
+plt.plot(np.logspace(1, 3, 100, base=n), 1e1*np.logspace(1, 3, 100, base=n)**-1, label="lutning -1")
 plt.legend()
 plt.show()
 
