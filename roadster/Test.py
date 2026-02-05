@@ -33,5 +33,8 @@ while c < 11925 or c > 11926:
     c = roadster.total_consumption(distance[-1], 'speed_anna.npz', n)
     print(f'Loop nr {n}')
 print(f'C is {c} and n = {n}')'''
-for i in np.logspace(0, 5):
-        print(i)
+n = 100000
+distance_km, speed_km = roadster.load_route('speed_anna.npz')
+
+print(roadster.distance(0.5, 'speed_anna.npz'))
+print(roadster.time_to_destination(52, 'speed_anna.npz', n))

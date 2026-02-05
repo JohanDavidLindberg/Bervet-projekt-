@@ -77,9 +77,22 @@ def total_consumption(x, route, n):
     
 
 ### PART 3A ###
-def distance(T, route): 
-    #iterera över x ochtills abs(tiden time_to_destination(x) - T) < 1e-4
-    #x -= time_to_destination(x)/velocity(x)    typ så tror jag
+def distance(T, route): #fungerar inte över 0.5, helt ärligt tycker inte att den bör fungera alls, för
+    #tycker att det ska vara ttd*vel, men då fungerar det inte, är så jälva förvirrad.
+    tolerans = 10
+    n = 100000
+    distance_km, speed_kmp = load_route(route)
+    assert np.all(T<=time_to_destination(distance_km[-1], route, n)), 'T must be smaller than total time to destination'
+    x= T/time_to_destination(distance_km[-1], route, n)*distance_km[-1] #gissning är snittet
+    while tolerans > 10**-4: #kör bara tills liten tollerans.
+        vel = velocity(x, route)
+        ttd = time_to_destination(x, route, n)
+        x -= ttd/vel
+        tolerans = abs(ttd - T)
+        print(x)
+        #print(tolerans)
+    return x
+
     
     
         

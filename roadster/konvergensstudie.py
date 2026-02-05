@@ -36,7 +36,7 @@ plt.show()'''
         nvalue = np.append(nvalue, n*2**i)
     return nvalue, totalfel
 
-n=10
+n=20
 
 anna_nvalue, anna_totalfel = konvergensstudie('speed_anna.npz', n)
 elsa_nvalue, elsa_totalfel = konvergensstudie('speed_elsa.npz', n)
