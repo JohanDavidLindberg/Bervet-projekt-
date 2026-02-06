@@ -34,7 +34,12 @@ while c < 11925 or c > 11926:
     print(f'Loop nr {n}')
 print(f'C is {c} and n = {n}')'''
 n = 100000
-distance_km, speed_km = roadster.load_route('speed_anna.npz')
-
-print(roadster.distance(0.5, 'speed_anna.npz'))
-print(roadster.time_to_destination(52, 'speed_anna.npz', n))
+distance_km, speed_km = roadster.load_route('speed_elsa.npz')
+T = 0.5
+#print(roadster.distance(T, 'speed_anna.npz'))
+#print(roadster.time_to_destination(52, 'speed_anna.npz', n))
+#x= T/roadster.time_to_destination(distance_km[-1], 'speed_anna.npz', n)*distance_km[-1]
+#print(x)
+#print(roadster.time_to_destination(x, 'speed_anna.npz', n)/roadster.velocity(x, 'speed_anna.npz'))
+#print(roadster.reach(10000, 'speed_anna.npz'))
+print(roadster.total_consumption(distance_km[-1], 'speed_elsa.npz', n))

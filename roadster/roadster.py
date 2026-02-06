@@ -77,30 +77,39 @@ def total_consumption(x, route, n):
     
 
 ### PART 3A ###
-def distance(T, route): #fungerar inte över 0.5, helt ärligt tycker inte att den bör fungera alls, för
-    #tycker att det ska vara ttd*vel, men då fungerar det inte, är så jälva förvirrad.
+def distance(T, route):
     tolerans = 10
     n = 100000
     distance_km, speed_kmp = load_route(route)
-    assert np.all(T<=time_to_destination(distance_km[-1], route, n)), 'T must be smaller than total time to destination'
-    x= T/time_to_destination(distance_km[-1], route, n)*distance_km[-1] #gissning är snittet
-    while tolerans > 10**-4: #kör bara tills liten tollerans.
+    if T>=time_to_destination(distance_km[-1], route, n):
+        x = distance_km[-1]
+        return x
+    
+    x= T/time_to_destination(distance_km[-1], route, n)*distance_km[-1] #gissning är en linjär avbildning
+    while tolerans > 10**-4: #kör bara NR tills liten tolerans.
         vel = velocity(x, route)
         ttd = time_to_destination(x, route, n)
-        x -= ttd/vel
+        x -= (ttd-T)*vel
         tolerans = abs(ttd - T)
-        print(x)
-        #print(tolerans)
+
     return x
-
-    
-    
-        
-    return
-
 
 
 ### PART 3B ###
 def reach(C, route):
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
-    raise NotImplementedError('reach not implemented yet!')
+    tolerans = 10
+    n = 100000
+    distance_km, speed_kmp = load_route(route)
+    if (C>=total_consumption(distance_km[-1], route, n)):
+        x = distance_km[-1]
+        return x
+
+    x = C/total_consumption(distance_km[-1], route, n)*distance_km[-1] #gissning är en linjär avbildning
+    while tolerans > 10**-4: #kör bara NR tills liten tolerans.
+        v = velocity(x, route)
+        com = consumption(v)
+        tcom = total_consumption(x, route, n)
+        x -= (tcom-C)/com
+        tolerans = abs(tcom-C)
+    return x
+
