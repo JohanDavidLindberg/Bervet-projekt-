@@ -27,5 +27,29 @@ def route_nyc(t,x):
 
 ### PART 4A ###
 def nyc_route_traveler_euler(t0,h):
-    # REMOVE THE FOLLOWING LINE AND WRITE YOUR SOLUTION
-    raise NotImplementedError('nyc_route_traveler_euler not implemented yet!')
+    t =t0
+    x = 0
+    v = route_nyc(t, x)[0][0]
+
+    time_h = [t]
+    distance_km = [x]
+    speed_kmph = [v]
+
+    while x < 60:
+        #kolla om nästa steg går över 60
+        if x + h*v >60: 
+            h = (60-x)/v
+            x = 60
+            t += h
+        else:
+            x += h*v
+            t += h
+        v = route_nyc(t, x)[0][0]
+        time_h.append(t)
+        distance_km.append(x)
+        speed_kmph.append(v)
+    
+    print(time_h)
+
+
+    return np.array(time_h), np.array(distance_km), np.array(speed_kmph)
