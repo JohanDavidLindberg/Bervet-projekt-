@@ -49,7 +49,6 @@ def nyc_route_traveler_euler(t0,h):
         distance_km.append(x)
         speed_kmph.append(v)
     
-    print(time_h)
 
 
     return np.array(time_h), np.array(distance_km), np.array(speed_kmph)

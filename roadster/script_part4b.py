@@ -19,3 +19,11 @@ plt.ylabel('Distance [km]',fontsize=18)
 plt.title('Speed [km/h]',fontsize=18)
 fig.colorbar(cs)
 plt.savefig("speed-data-nyc.eps", bbox_inches='tight')
+
+tid4, distans4, speed4 = route_nyc.nyc_route_traveler_euler(4, 0.01)
+tid930, distans930, speed930 = route_nyc.nyc_route_traveler_euler(9.5, 0.01)
+
+plt.plot(tid4, distans4, label = "04:00")
+plt.plot(tid930, distans930, label="09:30")
+plt.legend()
+plt.show()
